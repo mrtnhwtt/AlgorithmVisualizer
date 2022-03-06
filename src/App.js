@@ -4,8 +4,9 @@ import './App.css';
 function App() {
 
   const [r_array, setRArray] = useState([]);
+
   const createUnsortedArray = () => {
-    for (var array=[],i=0;i<100;++i) array[i]=i;
+    for (var array=[],i=0;i<1000;++i) array[i]=i;
     var tmp, current, top = array.length;
     if(top) while(--top) {
       current = Math.floor(Math.random() * (top + 1));
@@ -16,20 +17,30 @@ function App() {
     console.log(array)
     setRArray(array);
   };
+
+  const regenerateArray = () => {
+    createUnsortedArray()
+  };
+
   useEffect(() => {
-    console.log(r_array.length)
     if(r_array.length === 0) {
       createUnsortedArray()
-      // console.log(r_array)
+    } else {
+      console.log(r_array)
     }
   }, [r_array]);
+
+
+  console.log('rendering');
+
+
   return (
     <div className="App">
       <header className="App-header">
         <div className="nav-title">
           <div className="App-title">Pretty Array Visualisation</div>
           <div className="button-container">
-            <button>Regenerate Array</button>
+            <button onClick={regenerateArray}>Regenerate Array</button>
           </div>
         </div>
       </header>
