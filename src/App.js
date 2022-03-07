@@ -2,13 +2,14 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import ArrayBit from './components/ArrayBit/ArrayBit'
 import Button from './components/Button/Button'
-
+import { Slider } from '@mui/material';
 function App() {
 
   const [r_array, setRArray] = useState([]);
+  const [rangeValue, setRangeValue] = useState(1000)
 
   const createUnsortedArray = () => {
-    for (var array = [], i = 0; i < 1000; ++i) array[i] = i;
+    for (var array = [], i = 0; i < rangeValue; ++i) array[i] = i;
     var tmp, current, top = array.length;
     if (top) while (--top) {
       current = Math.floor(Math.random() * (top + 1));
@@ -16,25 +17,28 @@ function App() {
       array[current] = array[top];
       array[top] = tmp;
     }
-    console.log(array)
+    array = array.map((val) => {
+      return ++val;
+    });
     setRArray(array);
   };
 
   const regenerateArray = () => {
+    console.log('regenerating')
     createUnsortedArray()
   };
+
+  const handleSliderUpdate = (event, newValue) => {
+    setRangeValue(newValue)
+  }
 
   useEffect(() => {
     if (r_array.length === 0) {
       createUnsortedArray()
-    } else {
-      console.log(r_array)
     }
   }, [r_array]);
 
-
   console.log('rendering');
-
 
   return (
     <div className="App">
@@ -42,16 +46,34 @@ function App() {
         <div className="nav-title">
           <div className="App-title">Pretty Array Visualisation</div>
           <div className="array-settings-container">
-            <input type="range" name='array-length' min='20' max='1000'/>
-            <Button onClick={regenerateArray}>Regenerate Array</Button>
+            <div className="slider-container">
+              <Slider
+                aria-label="ArraySize"
+                defaultValue={1000}
+                valueLabelDisplay="auto"
+                step={50}
+                min={50}
+                max={1000}
+                onChange={handleSliderUpdate}
+              />
+            </div>
+            <div className="button-container">
+              <Button onClickAction={regenerateArray}>Regenerate Array</Button>
+            </div>
           </div>
         </div>
       </header>
       <main>
         <div className="arrayHolder">
-          {r_array.map((val) => {
-            return <ArrayBit index={val} arrayLength={r_array.length} />
-          })}
+          {
+            r_array.length !== 0 ? (
+
+              r_array.map((val) => {
+                return <ArrayBit key={val} index={val} arrayLength={r_array.length} />
+              })
+              ) : <div className='center-loading'>Loading...</div>
+          }
+          
         </div>
       </main>
     </div>

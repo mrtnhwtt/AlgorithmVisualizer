@@ -1,38 +1,74 @@
-html, body {
-  height: 100%;
+html,
+body {
+    height: 100%;
 }
+
 #root {
-  height: 100%;
+    height: 100%;
 }
+
 .App {
-  margin-left: 5vmin;
-  margin-right: 5vmin;
-  height: 100%;
+    margin-left: 5vmin;
+    margin-right: 5vmin;
+    height: 100%;
 }
+
 .App-header {
-  padding-top: 7vmin;
-  display: flex;
-}
-.App-title {
-  align-self: flex-end;
-  font-family: 'Courier New', Courier, monospace;
-  font-size: 4.5vh;
+    padding-top: 7vmin;
+    display: flex;
 }
 
 .nav-title {
-  display: flex;
-  width: 100%;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 1vmin
+}
+
+.App-title {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 2.5vh;
+    flex-grow: 1;
+}
+
+.array-settings-container {
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-grow: 4;
+    gap: 5%
+}
+
+.slider-container {
+    flex-grow: 2;
+    flex-basis: 10%;
+}
+
+.button-container {
+    flex-grow: 1;
 }
 
 main {
-  margin-top: 2vmin;
-  margin-bottom: 5vmin;
-  height: 70%;
-  border: 2px solid rgb(49, 47, 47);
-  padding: 1vmin;
+    margin-top: 2vmin;
+    margin-bottom: 5vmin;
+    height: 70%;
+    border: 2px solid rgb(49, 47, 47);
+    padding: 1vmin;
+    width: 100%;
 }
+
+.center-loading {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
 .arrayHolder {
-  display: flex;
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
