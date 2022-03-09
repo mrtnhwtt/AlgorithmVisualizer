@@ -1,6 +1,7 @@
 html,
 body {
     height: 100%;
+    background-color: #fcfcfa;
 }
 
 #root {
@@ -28,7 +29,7 @@ body {
 
 .App-title {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 2.5vh;
+    font-size: 2.5vmin;
     flex-grow: 1;
 }
 
@@ -37,13 +38,13 @@ body {
     justify-content: start;
     flex-wrap: wrap;
     align-items: center;
-    flex-grow: 4;
+    flex-grow: 6;
     gap: 5%
 }
 
 .slider-container {
     flex-grow: 2;
-    flex-basis: 10%;
+    flex-basis: 50%;
 }
 
 .button-container {
@@ -54,7 +55,7 @@ main {
     margin-top: 2vmin;
     margin-bottom: 5vmin;
     height: 70%;
-    border: 2px solid rgb(49, 47, 47);
+    border: 2px solid #282625;
     padding: 1vmin;
     width: 100%;
 }

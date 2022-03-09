@@ -23,6 +23,20 @@ function App() {
     setRArray(array);
   };
 
+  const BubbleSort = () => {
+    let arr = [...r_array]
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j] > arr[j + 1]) {
+          let temp = arr[j];
+          arr[j] = arr[j + 1];
+          arr[j + 1] = temp;
+        }
+      }
+    }
+    setRArray(arr)
+  }
+
   const regenerateArray = () => {
     console.log('regenerating')
     createUnsortedArray()
@@ -59,6 +73,9 @@ function App() {
             </div>
             <div className="button-container">
               <Button onClickAction={regenerateArray}>Regenerate Array</Button>
+            </div>
+            <div className="button-container">
+              <Button onClickAction={BubbleSort}>Launch Sort</Button>
             </div>
           </div>
         </div>

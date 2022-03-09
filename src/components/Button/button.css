@@ -1,15 +1,15 @@
 .custom-button {
-    background: rgb(49, 47, 47);
-    border: 1px solid rgb(49, 47, 47);
-    color: white;
+    background: #282625;
+    border: 1px solid #282625;
+    color: #fcfcfa;
     padding: 10px;
     transition: 0.4s ease;
     font-family: 'Courier New', Courier, monospace;
 }
 
 .custom-button:hover {
-    background: rgb(240, 240, 240);
-    border: 1px solid rgb(49, 47, 47);
+    background: #fcfcfa;
+    border: 1px solid #282625;
     color: black;
     cursor: pointer;
 }

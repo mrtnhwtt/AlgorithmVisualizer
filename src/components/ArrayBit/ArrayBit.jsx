@@ -4,7 +4,7 @@ const ArrayBit = ({ index, arrayLength }) => {
             style={{
                 width: 100 / arrayLength + "%",
                 height: index / arrayLength * 100 + "%",
-                backgroundColor: 'black',
+                backgroundColor: '#282625',
                 alignSelf: 'end'
             }}>
         </div>
