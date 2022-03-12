@@ -19,17 +19,18 @@ body {
     display: flex;
 }
 
-.nav-title {
+.nav-container {
     display: flex;
     justify-content: start;
     flex-wrap: wrap;
     width: 100%;
-    gap: 1vmin
+    gap: 1vmin;
+    flex-direction: column;
 }
 
 .App-title {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 2.5vmin;
+    font-size: 2.5vh;
     flex-grow: 1;
 }
 
@@ -43,13 +44,17 @@ body {
 }
 
 .slider-container {
+    display: flex;
     flex-grow: 2;
     flex-basis: 50%;
+    gap: 5%
 }
 
 .button-container {
     flex-grow: 1;
 }
+
+@media screen and (max-width: 992px) {}
 
 main {
     margin-top: 2vmin;
