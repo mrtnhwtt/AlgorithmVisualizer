@@ -11,7 +11,16 @@ function App() {
     const [isRunning, setIsRunning] = useState(false);
     const [sortMethod, setSortMethod] = useState(0);
     const [steps, setSteps] = useState(0);
-
+    const sliderLabel = [
+        {
+            value: 20,
+            label: 'Fast'
+        },
+        {
+            value: 200,
+            label: 'Slow'
+        }
+    ]
     const createUnsortedArray = () => {
         setSteps(0)
         for (var array = [], i = 0; i < rangeValue; ++i) array[i] = i;
@@ -31,22 +40,8 @@ function App() {
 
     const delay = () => {
         return new Promise(
-            resolve => setTimeout(resolve, 0.1)
+            resolve => setTimeout(resolve, 0.00001)
         );
-    }
-
-    const BubbleStep = async (arr, j) => {
-        await delay()
-        let step = steps
-        step++
-        setSteps(step)
-        if (arr[j] > arr[j + 1]) {
-            let temp = arr[j];
-            arr[j] = arr[j + 1];
-            arr[j + 1] = temp;
-            setRArray([...arr]);
-        }
-        return arr
     }
 
     const BubbleSort = async () => {
@@ -54,9 +49,19 @@ function App() {
         let step = 0
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr.length; j++) {
-                arr = await BubbleStep(arr, j)
+                await delay()
+                if (arr[j] > arr[j + 1]) {
+                    step++
+                    setSteps(step)
+                    let temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    setRArray([...arr]);
+                }
             }
         }
+        console.log('done')
+        setIsRunning(false)
     }
 
     const handleSort = () => {
@@ -69,7 +74,6 @@ function App() {
             default:
                 break;
         }
-        console.log('done')
     }
 
     const handleSelectSort = (event) => {
@@ -102,13 +106,14 @@ function App() {
                             <Slider aria-label="ArraySize"
                                 defaultValue={35}
                                 valueLabelDisplay="auto"
-                                step={1}
-                                min={15}
-                                max={150}
+                                step={5}
+                                min={20}
+                                max={200}
+                                marks={sliderLabel}
                                 onChange={handleSliderUpdate}
                             />
                             <div className="button-container">
-                                <Button onClickAction={regenerateArray}>Regenerate</Button> </div> <div className="button-container" >
+                                <Button onClickAction={regenerateArray} desactivated={isRunning}>Regenerate</Button> </div> <div className="button-container" >
                             </div>
                         </div>
                         <div>
@@ -121,7 +126,8 @@ function App() {
                             </Select>
                         </div>
                         <div className="button-container">
-                            <Button onClickAction={handleSort} >Launch Sort</Button> </div>
+                            <Button onClickAction={handleSort} desactivated={isRunning} >Launch Sort</Button>
+                        </div>
                     </div>
                 </div >
             </header>
@@ -139,9 +145,9 @@ function App() {
                 }
                 </div>
             </main >
-                <div>
-                    Steps: {steps}
-                </div>
+            <div>
+                Steps: {steps}
+            </div>
         </div>
     );
 }
