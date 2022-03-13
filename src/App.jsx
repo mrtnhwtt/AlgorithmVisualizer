@@ -1,18 +1,28 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import ArrayBit from './components/ArrayBit/ArrayBit'
 import Button from './components/Button/Button'
-import { Slider, InputLabel, MenuItem, Select } from '@mui/material';
+import { Slider, MenuItem, Select } from '@mui/material';
 
 function App() {
 
     const [r_array, setRArray] = useState([]);
-    const [rangeValue, setRangeValue] = useState(20);
+    const [rangeValue, setRangeValue] = useState(35);
     const [isRunning, setIsRunning] = useState(false);
     const [sortMethod, setSortMethod] = useState(0);
     const [steps, setSteps] = useState(0);
-
+    const sliderLabel = [
+        {
+            value: 20,
+            label: 'Fast'
+        },
+        {
+            value: 200,
+            label: 'Slow'
+        }
+    ]
     const createUnsortedArray = () => {
+        setSteps(0)
         for (var array = [], i = 0; i < rangeValue; ++i) array[i] = i;
         var tmp, current, top = array.length;
         if (top)
@@ -28,26 +38,34 @@ function App() {
         setRArray(array);
     };
 
-    const BubbleSort = () => {
+    const delay = () => {
+        return new Promise(
+            resolve => setTimeout(resolve, 0.00001)
+        );
+    }
+
+    const BubbleSort = async () => {
         let arr = [...r_array]
         let step = 0
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr.length; j++) {
-                setTimeout(() => {
+                await delay()
+                if (arr[j] > arr[j + 1]) {
                     step++
-                    if (arr[j] > arr[j + 1]) {
-                        let temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                        setRArray([...arr]);
-                    }
-                }, 0.00001)
+                    setSteps(step)
+                    let temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    setRArray([...arr]);
+                }
             }
         }
-        setSteps(step)
+        console.log('done')
+        setIsRunning(false)
     }
 
     const handleSort = () => {
+        setIsRunning(true)
         switch (sortMethod) {
             case 0:
                 BubbleSort()
@@ -76,7 +94,7 @@ function App() {
         }
     }, [r_array]);
 
-    console.log('rendering');
+    // console.log('rendering');
 
     return (
         <div className="App" >
@@ -86,29 +104,30 @@ function App() {
                     <div className="array-settings-container" >
                         <div className="slider-container" >
                             <Slider aria-label="ArraySize"
-                                defaultValue={20}
+                                defaultValue={35}
                                 valueLabelDisplay="auto"
-                                step={1}
-                                min={5}
-                                max={100}
+                                step={5}
+                                min={20}
+                                max={200}
+                                marks={sliderLabel}
                                 onChange={handleSliderUpdate}
                             />
                             <div className="button-container">
-                                <Button onClickAction={regenerateArray}>Regenerate</Button> </div> <div className="button-container" >
+                                <Button onClickAction={regenerateArray} desactivated={isRunning}>Regenerate</Button> </div> <div className="button-container" >
                             </div>
                         </div>
-                        <div className="button-container">
-                            <InputLabel id="sort-select-label">Sort Method</InputLabel>
+                        <div>
                             <Select
-                                labelId="sort-select-label"
                                 id="sort-select"
                                 value={sortMethod}
-                                label="Sort Method"
                                 onChange={handleSelectSort}
                             >
                                 <MenuItem value={0}>Bubble Sort</MenuItem>
                             </Select>
-                            <Button onClickAction={handleSort} >Launch Sort</Button> </div>
+                        </div>
+                        <div className="button-container">
+                            <Button onClickAction={handleSort} desactivated={isRunning} >Launch Sort</Button>
+                        </div>
                     </div>
                 </div >
             </header>
@@ -126,6 +145,9 @@ function App() {
                 }
                 </div>
             </main >
+            <div>
+                Steps: {steps}
+            </div>
         </div>
     );
 }

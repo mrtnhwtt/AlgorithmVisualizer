@@ -15,7 +15,7 @@ body {
 }
 
 .App-header {
-    padding-top: 7vmin;
+    padding-top: 3vmin;
     display: flex;
 }
 
@@ -47,6 +47,7 @@ body {
     display: flex;
     flex-grow: 2;
     flex-basis: 50%;
+    align-items: center;
     gap: 5%
 }
 
@@ -58,7 +59,7 @@ body {
 
 main {
     margin-top: 2vmin;
-    margin-bottom: 5vmin;
+    margin-bottom: 1vmin;
     height: 70%;
     border: 2px solid #282625;
     padding: 1vmin;
