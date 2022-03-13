@@ -1,0 +1,15 @@
+.custom-button {
+    background: #282625;
+    border: 1px solid #282625;
+    color: #fcfcfa;
+    padding: 10px;
+    transition: 0.4s ease;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.custom-button:hover {
+    background: #fcfcfa;
+    border: 1px solid #282625;
+    color: black;
+    cursor: pointer;
+}
