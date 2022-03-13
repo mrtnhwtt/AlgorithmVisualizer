@@ -11,7 +11,16 @@ function App() {
     const [isRunning, setIsRunning] = useState(false);
     const [sortMethod, setSortMethod] = useState(0);
     const [steps, setSteps] = useState(0);
-
+    const sliderLabel = [
+        {
+            value: 20,
+            label: 'Fast'
+        },
+        {
+            value: 200,
+            label: 'Slow'
+        }
+    ]
     const createUnsortedArray = () => {
         setSteps(0)
         for (var array = [], i = 0; i < rangeValue; ++i) array[i] = i;
