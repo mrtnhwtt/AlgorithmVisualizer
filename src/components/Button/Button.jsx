@@ -1,8 +1,8 @@
 import './button.css'
-const Button = ({ children, onClickAction }) => {
+const Button = ({ children, onClickAction, desactivated }) => {
     return (
         <div>
-            <button className="custom-button" onClick={onClickAction}>{children}</button>
+            <button disabled={desactivated} className="custom-button" onClick={onClickAction}>{children}</button>
         </div>
     );
 }

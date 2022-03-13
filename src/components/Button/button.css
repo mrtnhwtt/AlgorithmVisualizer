@@ -13,3 +13,10 @@
     color: #282625;
     cursor: pointer;
 }
+
+.custom-button:disabled {
+    cursor: not-allowed;
+    background: #ec5656;
+    color: #282625;
+    border: 1px solid #fcfcfa;
+}
