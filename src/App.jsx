@@ -1,18 +1,19 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import ArrayBit from './components/ArrayBit/ArrayBit'
 import Button from './components/Button/Button'
-import { Slider, InputLabel, MenuItem, Select } from '@mui/material';
+import { Slider, MenuItem, Select } from '@mui/material';
 
 function App() {
 
     const [r_array, setRArray] = useState([]);
-    const [rangeValue, setRangeValue] = useState(20);
+    const [rangeValue, setRangeValue] = useState(35);
     const [isRunning, setIsRunning] = useState(false);
     const [sortMethod, setSortMethod] = useState(0);
     const [steps, setSteps] = useState(0);
 
     const createUnsortedArray = () => {
+        setSteps(0)
         for (var array = [], i = 0; i < rangeValue; ++i) array[i] = i;
         var tmp, current, top = array.length;
         if (top)
@@ -40,11 +41,11 @@ function App() {
                         arr[j] = arr[j + 1];
                         arr[j + 1] = temp;
                         setRArray([...arr]);
+                        setSteps(step)
                     }
                 }, 0.00001)
             }
         }
-        setSteps(step)
     }
 
     const handleSort = () => {
@@ -76,7 +77,7 @@ function App() {
         }
     }, [r_array]);
 
-    console.log('rendering');
+    // console.log('rendering');
 
     return (
         <div className="App" >
@@ -86,28 +87,27 @@ function App() {
                     <div className="array-settings-container" >
                         <div className="slider-container" >
                             <Slider aria-label="ArraySize"
-                                defaultValue={20}
+                                defaultValue={35}
                                 valueLabelDisplay="auto"
                                 step={1}
-                                min={5}
-                                max={100}
+                                min={15}
+                                max={150}
                                 onChange={handleSliderUpdate}
                             />
                             <div className="button-container">
                                 <Button onClickAction={regenerateArray}>Regenerate</Button> </div> <div className="button-container" >
                             </div>
                         </div>
-                        <div className="button-container">
-                            <InputLabel id="sort-select-label">Sort Method</InputLabel>
+                        <div>
                             <Select
-                                labelId="sort-select-label"
                                 id="sort-select"
                                 value={sortMethod}
-                                label="Sort Method"
                                 onChange={handleSelectSort}
                             >
                                 <MenuItem value={0}>Bubble Sort</MenuItem>
                             </Select>
+                        </div>
+                        <div className="button-container">
                             <Button onClickAction={handleSort} >Launch Sort</Button> </div>
                     </div>
                 </div >
@@ -126,6 +126,9 @@ function App() {
                 }
                 </div>
             </main >
+                <div>
+                    Steps: {steps}
+                </div>
         </div>
     );
 }
