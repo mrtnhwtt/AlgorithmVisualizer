@@ -11,16 +11,7 @@ function App() {
     const [isRunning, setIsRunning] = useState(false);
     const [sortMethod, setSortMethod] = useState(0);
     const [steps, setSteps] = useState(0);
-    const sliderLabel = [
-        {
-            value: 20,
-            label: 'Fast'
-        },
-        {
-            value: 200,
-            label: 'Slow'
-        }
-    ]
+
     const createUnsortedArray = () => {
         setSteps(0)
         for (var array = [], i = 0; i < rangeValue; ++i) array[i] = i;
@@ -101,32 +92,39 @@ function App() {
             <header className="App-header" >
                 <div className="nav-container" >
                     <div className="App-title" > Pretty Array Visualisation </div>
-                    <div className="array-settings-container" >
-                        <div className="slider-container" >
+                    <div className="settings-container" >
+                        <div className="opt-container" >
                             <Slider aria-label="ArraySize"
                                 defaultValue={35}
                                 valueLabelDisplay="auto"
                                 step={5}
                                 min={20}
                                 max={200}
-                                marks={sliderLabel}
                                 onChange={handleSliderUpdate}
+                                sx={{
+                                    width: 180,
+                                    color: '#282625',
+                                  }}
                             />
                             <div className="button-container">
                                 <Button onClickAction={regenerateArray} desactivated={isRunning}>Regenerate</Button> </div> <div className="button-container" >
                             </div>
                         </div>
-                        <div>
+                        <div className='opt-container'>
                             <Select
                                 id="sort-select"
                                 value={sortMethod}
                                 onChange={handleSelectSort}
+                                sx={{
+                                    width: 180,
+                                    color: '#282625',
+                                  }}
                             >
                                 <MenuItem value={0}>Bubble Sort</MenuItem>
                             </Select>
-                        </div>
                         <div className="button-container">
                             <Button onClickAction={handleSort} desactivated={isRunning} >Launch Sort</Button>
+                        </div>
                         </div>
                     </div>
                 </div >
