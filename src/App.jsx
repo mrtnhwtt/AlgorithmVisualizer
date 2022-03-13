@@ -29,26 +29,38 @@ function App() {
         setRArray(array);
     };
 
-    const BubbleSort = () => {
+    const delay = () => {
+        return new Promise(
+            resolve => setTimeout(resolve, 0.1)
+        );
+    }
+
+    const BubbleStep = async (arr, j) => {
+        await delay()
+        let step = steps
+        step++
+        setSteps(step)
+        if (arr[j] > arr[j + 1]) {
+            let temp = arr[j];
+            arr[j] = arr[j + 1];
+            arr[j + 1] = temp;
+            setRArray([...arr]);
+        }
+        return arr
+    }
+
+    const BubbleSort = async () => {
         let arr = [...r_array]
         let step = 0
         for (let i = 0; i < arr.length; i++) {
             for (let j = 0; j < arr.length; j++) {
-                setTimeout(() => {
-                    step++
-                    if (arr[j] > arr[j + 1]) {
-                        let temp = arr[j];
-                        arr[j] = arr[j + 1];
-                        arr[j + 1] = temp;
-                        setRArray([...arr]);
-                        setSteps(step)
-                    }
-                }, 0.00001)
+                arr = await BubbleStep(arr, j)
             }
         }
     }
 
     const handleSort = () => {
+        setIsRunning(true)
         switch (sortMethod) {
             case 0:
                 BubbleSort()
@@ -57,6 +69,7 @@ function App() {
             default:
                 break;
         }
+        console.log('done')
     }
 
     const handleSelectSort = (event) => {
