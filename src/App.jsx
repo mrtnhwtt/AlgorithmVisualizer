@@ -12,7 +12,7 @@ const App = () => {
     const [isRunning, setIsRunning] = useState(false);
     const [sortMethod, setSortMethod] = useState(0);
     const [steps, setSteps] = useState(0);
-    
+
     const createUnsortedArray = () => {
         setSteps(0)
         for (var array = [], i = 0; i < rangeValue; ++i) array[i] = i;
@@ -69,10 +69,19 @@ const App = () => {
                                 sx={{
                                     width: 180,
                                     color: '#282625',
-                                  }}
+                                }}
+                                data-testid='arraySizeSlider'
                             />
                             <div className="button-container">
-                                <Button onClickAction={regenerateArray} desactivated={isRunning}>Regenerate</Button> </div> <div className="button-container" >
+                                <Button
+                                    onClickAction={regenerateArray}
+                                    desactivated={isRunning}
+                                    testid='regenerateArrayButton'
+                                >
+                                    Regenerate
+                                </Button>
+                            </div>
+                            <div className="button-container" >
                             </div>
                         </div>
                         <div className='opt-container'>
@@ -83,18 +92,29 @@ const App = () => {
                                 sx={{
                                     width: 180,
                                     color: '#282625',
-                                  }}
+                                }}
+                                data-testid='sortMethodSelect'
                             >
                                 <MenuItem value={0}>Bubble Sort</MenuItem>
                             </Select>
-                        <div className="button-container">
-                            <Button onClickAction={handleSortLaunch} desactivated={isRunning} >Launch Sort</Button>
-                        </div>
+                            <div className="button-container">
+                                <Button
+                                    onClickAction={handleSortLaunch}
+                                    desactivated={isRunning}
+                                    testid='launchSortButton'
+                                >
+                                    Launch Sort
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 </div >
             </header>
-            <ArrayContainer targetArray={r_array} steps={steps}/>
+            <ArrayContainer
+                targetArray={r_array}
+                steps={steps}
+                testid='arrayDisplay'
+            />
         </div>
     );
 }

@@ -1,9 +1,9 @@
 import ArrayBit from "../ArrayBit/ArrayBit";
 
-const ArrayContainer = ({ targetArray, steps }) => {
+const ArrayContainer = ({ targetArray, steps, testid }) => {
     return (
         <>
-            <main>
+            <main data-testid={testid}>
                 <div className="arrayHolder" > {
                     targetArray.length !== 0 ? (
 
