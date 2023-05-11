@@ -1,5 +1,5 @@
 import { delay, incrementStep } from "./utils";
-import { toggleSorting, setArray, setStep } from '../context/rootSlice';
+import { toggleSorting, setArray, setStep, setSelected } from '../context/rootSlice';
 import { Dispatch } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
 
@@ -12,11 +12,13 @@ export const SelectionSort = async (array: number[], dispatch: Dispatch<AnyActio
     for (let i = 0; i < len; i++) {
         stepCount = incrementStep(stepCount, dispatch);
         let min_index = i;
-        await delay(50)
         for (let j = i + 1; j < len; j++) {
             stepCount = incrementStep(stepCount, dispatch);
-
+            dispatch(setSelected([arr[j], arr[min_index]]))
+            await delay(50)
             if (arr[min_index] > arr[j]) {
+                dispatch(setSelected([arr[j], arr[min_index]]))
+                await delay(50)
                 stepCount = incrementStep(stepCount, dispatch);
                 min_index = j;
             }
@@ -26,6 +28,9 @@ export const SelectionSort = async (array: number[], dispatch: Dispatch<AnyActio
         arr[min_index] = tmp
         stepCount = incrementStep(stepCount, dispatch);
         dispatch(setArray([...arr]))
+        dispatch(setSelected([-1, arr[i]]))
+
         await delay(50)
     }
+    dispatch(setSelected([-1, -1]));
 };

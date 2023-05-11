@@ -26,6 +26,6 @@ export const BubbleSort = async (array: number[], dispatch: Dispatch<AnyAction>)
             }
         }
     }
-    dispatch(setSelected([0, 0]));
+    dispatch(setSelected([-1, -1]));
     dispatch(toggleSorting());
 };
