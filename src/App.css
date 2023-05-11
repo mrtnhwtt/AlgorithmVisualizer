@@ -1,90 +1,24 @@
 html,
 body {
-    height: 100%;
-    background-color: #fcfcfa;
+  height: 100%;
+  /* background-color: #fcfcfa; */
+  background-color: #eae4d7;
+
 }
+
 
 #root {
-    height: 100%;
-}
-
-.App {
-    margin-left: 5vmin;
-    margin-right: 5vmin;
-    height: 100%;
-}
-
-.App-header {
-    padding-top: 3vmin;
-    display: flex;
-    width: 100%;
-}
-
-.nav-container {
-    display: flex;
-    justify-content: start;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 1vmin;
-    flex-direction: column;
-}
-
-.App-title {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
-    flex-grow: 1;
-}
-
-.settings-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    flex-wrap: wrap;
-    align-items: center;
-    flex-grow: 6;
-    gap: 5%
-}
-
-.opt-container {
-    display: flex;
-    flex-grow: 2;
-    flex-basis: 100%;
-    align-items: center;
-    gap: 5%
-}
-
-.button-container {
-    flex-grow: 1;
-    display: flex;
-    align-content: center;
-    justify-content: start;
-}
-
-@media screen and (max-width: 800px) {
-    .settings-container {
-        flex-direction: row;
-        justify-content: end;
-    }
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  height: 100%;
 }
 
 main {
-    margin-top: 2vmin;
-    margin-bottom: 1vmin;
-    height: 70%;
-    border: 2px solid #282625;
-    padding: 1vmin;
-}
-
-.center-loading {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.arrayHolder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin-top: 2vmin;
+  margin-bottom: 1vmin;
+  height: 70%;
+  border: 2px solid #282625;
+  padding: 1vmin;
 }
