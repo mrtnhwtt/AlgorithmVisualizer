@@ -1,5 +1,5 @@
 import './App.css'
-import ArrayCanvas from './pages/SortCanvas/ArrayCanvas'
+import ArrayCanvas from './pages/ArrayCanvas/ArrayCanvas'
 
 function App() {
   return (

@@ -1,21 +1,23 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { createUnsortedArray } from "./utils/utils";
+import { createUnsortedArray } from "../utils/utils";
 // import { createUnsortedArray } from "./utils/utils";
 
 export interface RootState {
     array: number[];
     sorting: boolean;
-    method: "bubble" | "insertion";
+    method: "bubble" | "selection";
     selected: number[];
     step: number;
+    speed: number;
 }
 
 const initialState: RootState = {
     array: createUnsortedArray(25),
     sorting: false,
-    method: "bubble",
+    method: "selection",
     selected: [-1, -1],
     step: 0,
+    speed: 50
 }
 
 
@@ -29,7 +31,7 @@ export const rootSlice = createSlice({
         toggleSorting: (state) => {
             state.sorting = !state.sorting;
         },
-        setMethod: (state, action: PayloadAction<"bubble" | "insertion">) => {
+        setMethod: (state, action: PayloadAction<"bubble" | "selection">) => {
             state.method = action.payload;
         },
         setSelected: (state, action: PayloadAction<number[]>) => {
@@ -37,9 +39,12 @@ export const rootSlice = createSlice({
         },
         setStep: (state, action: PayloadAction<number>) => {
             state.step = action.payload;
+        },
+        setSpeed: (state, action: PayloadAction<number>) => {
+            state.speed = action.payload;
         }
     }
 });
 
-export const { setArray, toggleSorting, setMethod, setSelected, setStep } = rootSlice.actions;
+export const { setArray, toggleSorting, setMethod, setSelected, setStep, setSpeed } = rootSlice.actions;
 export default rootSlice.reducer;

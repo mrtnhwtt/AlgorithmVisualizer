@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import Canvas from '../../components/Canvas/Canvas'
 import './ArrayCanvas.css';
 import { RootState } from '../../store';
-import { useHandleSort } from '../../utils/Sort';
+import { useHandleSort } from '../../hooks/useHandleSort';
 
 const ArrayCanvas: React.FC = () => {
     const handleSort = useHandleSort();
@@ -16,7 +16,7 @@ const ArrayCanvas: React.FC = () => {
                 <button onClick={handleSort}>Sort</button>
             </div>
             <div>
-                <p>Step: {useSelector((state: RootState) => state.root.step)}</p>
+                <p>Steps: {useSelector((state: RootState) => state.root.step)}</p>
             </div>
         </div >
     );
