@@ -14,7 +14,7 @@ export interface RootState {
 const initialState: RootState = {
     array: createUnsortedArray(25),
     sorting: false,
-    method: "selection",
+    method: "bubble",
     selected: [-1, -1],
     step: 0,
     speed: 50

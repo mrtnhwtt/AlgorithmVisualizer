@@ -3,7 +3,7 @@ import { toggleSorting, setSelected, setArray, setStep } from '../context/rootSl
 import { Dispatch } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
 
-export const BubbleSort = async (array: number[], dispatch: Dispatch<AnyAction>) => {
+export const BubbleSort = async (array: number[], speed: number, dispatch: Dispatch<AnyAction>) => {
     dispatch(toggleSorting());
     let arr = [...array];
     let stepCount = 0;
@@ -14,7 +14,7 @@ export const BubbleSort = async (array: number[], dispatch: Dispatch<AnyAction>)
         for (let j = 0; j < len - i - 1; j++) {
             stepCount = incrementStep(stepCount, dispatch);
             dispatch(setSelected([arr[j + 1], arr[j]]));
-            await delay(50);
+            await delay(speed);
             if (arr[j] > arr[j + 1]) {
                 let temp = arr[j];
                 arr[j] = arr[j + 1];
@@ -22,7 +22,7 @@ export const BubbleSort = async (array: number[], dispatch: Dispatch<AnyAction>)
                 stepCount = incrementStep(stepCount, dispatch);
                 dispatch(setSelected([arr[j], arr[j + 1]]));
                 dispatch(setArray([...arr]));
-                await delay(50);
+                await delay(speed);
             }
         }
     }

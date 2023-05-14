@@ -3,7 +3,7 @@ import { toggleSorting, setArray, setStep, setSelected } from '../context/rootSl
 import { Dispatch } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
 
-export const SelectionSort = async (array: number[], dispatch: Dispatch<AnyAction>) => {
+export const SelectionSort = async (array: number[], speed: number, dispatch: Dispatch<AnyAction>) => {
     dispatch(toggleSorting());
     let arr = [...array];
     let stepCount = 0;
@@ -15,10 +15,10 @@ export const SelectionSort = async (array: number[], dispatch: Dispatch<AnyActio
         for (let j = i + 1; j < len; j++) {
             stepCount = incrementStep(stepCount, dispatch);
             dispatch(setSelected([arr[j], arr[min_index]]))
-            await delay(50)
+            await delay(speed)
             if (arr[min_index] > arr[j]) {
                 dispatch(setSelected([arr[j], arr[min_index]]))
-                await delay(50)
+                await delay(speed)
                 stepCount = incrementStep(stepCount, dispatch);
                 min_index = j;
             }
@@ -30,7 +30,8 @@ export const SelectionSort = async (array: number[], dispatch: Dispatch<AnyActio
         dispatch(setArray([...arr]))
         dispatch(setSelected([-1, arr[i]]))
 
-        await delay(50)
+        await delay(speed)
     }
     dispatch(setSelected([-1, -1]));
+    dispatch(toggleSorting());
 };

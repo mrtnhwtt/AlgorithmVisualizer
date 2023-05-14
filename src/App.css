@@ -1,16 +1,17 @@
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
   /* background-color: #fcfcfa; */
   background-color: #eae4d7;
-
 }
 
 
 #root {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   height: 100%;
 }

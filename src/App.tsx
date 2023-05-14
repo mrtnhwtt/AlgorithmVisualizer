@@ -1,10 +1,10 @@
 import './App.css'
-import ArrayCanvas from './pages/ArrayCanvas/ArrayCanvas'
+import SortPage from './pages/SortPage/SortPage'
 
 function App() {
   return (
     <>
-      <ArrayCanvas />
+      <SortPage />
     </>
   )
 }

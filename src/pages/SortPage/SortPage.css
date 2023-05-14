@@ -1,0 +1,12 @@
+.container {
+    padding-top: 1%;
+    height: 90%;
+}
+
+.canvas-container {
+    /* margin-top: 1rem; */
+    /* margin-bottom: 1vmin; */
+    height: 70%;
+    border: 2px solid #282625;
+    padding: 1vmin;
+}

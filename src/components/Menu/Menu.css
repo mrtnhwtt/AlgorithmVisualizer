@@ -1,0 +1,10 @@
+.menu-container {
+    padding-top: 5%;
+    padding: 1vmax;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: auto;
+}
