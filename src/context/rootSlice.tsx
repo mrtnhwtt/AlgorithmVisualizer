@@ -2,10 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createUnsortedArray } from "../utils/utils";
 // import { createUnsortedArray } from "./utils/utils";
 
+export type SortMethod = "bubble" | "selection";
 export interface RootState {
     array: number[];
     sorting: boolean;
-    method: "bubble" | "selection";
+    method: SortMethod;
     selected: number[];
     step: number;
     speed: number;
@@ -31,7 +32,7 @@ export const rootSlice = createSlice({
         toggleSorting: (state) => {
             state.sorting = !state.sorting;
         },
-        setMethod: (state, action: PayloadAction<"bubble" | "selection">) => {
+        setMethod: (state, action: PayloadAction<SortMethod>) => {
             state.method = action.payload;
         },
         setSelected: (state, action: PayloadAction<number[]>) => {

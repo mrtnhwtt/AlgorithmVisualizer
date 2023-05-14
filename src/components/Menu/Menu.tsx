@@ -13,7 +13,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
-import { setMethod, setSpeed, setArray } from '../../context/rootSlice';
+import { setMethod, setSpeed, setArray, SortMethod } from '../../context/rootSlice';
 import { createUnsortedArray } from "../../utils/utils";
 
 const Menu: React.FC = () => {
@@ -26,7 +26,7 @@ const Menu: React.FC = () => {
 
   const handleChange = (event: SelectChangeEvent) => {
     setSortMethod(event.target.value as string);
-    dispatch(setMethod(event.target.value as "bubble" | "selection"));
+    dispatch(setMethod(event.target.value as SortMethod));
 
   };
   const handleSliderChange = (_event: Event, newValue: number | number[]) => {
