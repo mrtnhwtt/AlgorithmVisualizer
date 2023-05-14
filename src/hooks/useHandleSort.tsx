@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../store';
 import { BubbleSort } from '../algorithm/bubbleSort';
 import { SelectionSort } from '../algorithm/selectionSort';
+import { InsertionSort } from '../algorithm/insertionSort';
 
 export const useHandleSort = () => {
     const dispatch = useDispatch();
@@ -15,6 +16,9 @@ export const useHandleSort = () => {
                 break;
             case "selection":
                 SelectionSort(array, speed, dispatch)
+                break;
+            case "insertion":
+                InsertionSort(array, speed, dispatch)
                 break;
             default:
                 break;

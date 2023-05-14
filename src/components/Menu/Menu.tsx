@@ -38,6 +38,12 @@ const Menu: React.FC = () => {
     dispatch(setArray(createUnsortedArray(25)));
   };
 
+  const SortMethodList = [
+    { "value": "bubble", "name": "Bubble Sort" },
+    { "value": "selection", "name": "Selection Sort" },
+    { "value": "insertion", "name": "Insertion Sort" }
+  ];
+
   const marks = [
     {
       value: 25,
@@ -75,8 +81,13 @@ const Menu: React.FC = () => {
             disabled={isSorting}
             size="small"
           >
-            <MenuItem value={"bubble"}>Bubble Sort</MenuItem>
-            <MenuItem value={"selection"}>Selection Sort</MenuItem>
+            {
+              SortMethodList.map((item, index) => {
+                return (
+                  <MenuItem key={index} value={item.value}>{item.name}</MenuItem>
+                )
+              })
+            }
           </Select>
         </FormControl>
       </Box>
