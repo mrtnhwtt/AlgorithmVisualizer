@@ -41,7 +41,8 @@ const Menu: React.FC = () => {
   const SortMethodList = [
     { "value": "bubble", "name": "Bubble Sort" },
     { "value": "selection", "name": "Selection Sort" },
-    { "value": "insertion", "name": "Insertion Sort" }
+    { "value": "insertion", "name": "Insertion Sort" },
+    { "value": "quick", "name": "Quick Sort" },
   ];
 
   const marks = [
@@ -96,7 +97,7 @@ const Menu: React.FC = () => {
           Speed
         </Typography>
         <Slider
-          defaultValue={sliderSpeed}
+          value={sliderSpeed}
           onChange={handleSliderChange}
           step={25}
           min={25}

@@ -3,7 +3,7 @@ import { RootState } from '../store';
 import { BubbleSort } from '../algorithm/bubbleSort';
 import { SelectionSort } from '../algorithm/selectionSort';
 import { InsertionSort } from '../algorithm/insertionSort';
-
+import { QuickSort } from '../algorithm/quickSort';
 export const useHandleSort = () => {
     const dispatch = useDispatch();
     let method: string = useSelector((state: RootState) => state.root.method);
@@ -19,6 +19,9 @@ export const useHandleSort = () => {
                 break;
             case "insertion":
                 InsertionSort(array, speed, dispatch)
+                break;
+            case "quick":
+                QuickSort(array, speed, dispatch)
                 break;
             default:
                 break;

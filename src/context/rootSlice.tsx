@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { createUnsortedArray } from "../utils/utils";
 // import { createUnsortedArray } from "./utils/utils";
 
-export type SortMethod = "bubble" | "selection" | "insertion";
+export type SortMethod = "bubble" | "selection" | "insertion" | "quick" | "merge";
 export interface RootState {
     array: number[];
     sorting: boolean;
