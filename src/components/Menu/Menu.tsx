@@ -21,7 +21,7 @@ const Menu: React.FC = () => {
   const initialSortMethod: string = useSelector((state: RootState) => state.root.method);
   const handleSort = useHandleSort();
   const [sortMethod, setSortMethod] = useState(initialSortMethod);
-  const [sliderSpeed, setSliderSpeed] = useState(50);
+  const [sliderSpeed, setSliderSpeed] = useState(751);
   const isSorting: boolean = useSelector((state: RootState) => state.root.sorting);
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -31,7 +31,9 @@ const Menu: React.FC = () => {
   };
   const handleSliderChange = (_event: Event, newValue: number | number[]) => {
     setSliderSpeed(newValue as number);
-    dispatch(setSpeed(newValue as number));
+    const transformedSpeed = 801 - (newValue as number);
+    console.log(newValue, transformedSpeed)
+    dispatch(setSpeed(transformedSpeed));
   };
 
   const handleResetArray = () => {
@@ -47,11 +49,11 @@ const Menu: React.FC = () => {
 
   const marks = [
     {
-      value: 25,
+      value: 775,
       label: "Fastest",
     },
     {
-      value: 200,
+      value: 25,
       label: "Slowest",
     },
   ];
@@ -100,8 +102,8 @@ const Menu: React.FC = () => {
           value={sliderSpeed}
           onChange={handleSliderChange}
           step={25}
-          min={25}
-          max={200}
+          min={0}
+          max={775}
           aria-label="Default"
           valueLabelDisplay="off"
           aria-labelledby="speed-slider"
