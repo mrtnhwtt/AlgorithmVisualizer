@@ -15,15 +15,15 @@ export type RootState = {
 }
 
 const initialState: RootState = {
-    array: createUnsortedArray(25),
+    array: createUnsortedArray(100),
     sorting: false,
-    method: "bubble",
+    method: "quick",
     red: [],
     blue: [],
     green: [],
     subarrayIndex: [],
     step: 0,
-    speed: 50
+    speed: 1
 }
 
 

@@ -22,6 +22,7 @@ const partition = async (speed: number, arr: number[], low: number, high: number
         await updateArrayDisplay({ dispatch, speed, red: [pivot], blue: [arr[i]], green: [arr[j]] });
         if (arr[j] < pivot) {
             i++;
+            await updateArrayDisplay({ dispatch, speed, red: [pivot], blue: [arr[i]], green: [arr[j]] });
             let tmp = arr[i];
             arr[i] = arr[j];
             arr[j] = tmp;

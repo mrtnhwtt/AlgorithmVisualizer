@@ -1,10 +1,13 @@
 .menu-container {
-    padding-top: 5%;
-    padding: 1vmax;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     gap: 1rem;
-    overflow: auto;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.menu-container> :first-child {
+    margin-top: 10vh;
 }

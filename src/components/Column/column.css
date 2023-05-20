@@ -1,6 +1,6 @@
 .column {
     background-color: #282625;
-    border: 1px solid #eae4d7;
+    box-shadow: inset 0 0 0 0.2px #eae4d7;
 }
 
 .red {
@@ -16,5 +16,6 @@
 }
 
 .subarray {
-    border: 1px solid #790251;
+
+    box-shadow: inset 0 0 0 0.2px #790251;
 }
