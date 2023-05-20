@@ -32,7 +32,6 @@ const Menu: React.FC = () => {
   const handleSliderChange = (_event: Event, newValue: number | number[]) => {
     setSliderSpeed(newValue as number);
     const transformedSpeed = 801 - (newValue as number);
-    console.log(newValue, transformedSpeed)
     dispatch(setSpeed(transformedSpeed));
   };
 
