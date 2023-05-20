@@ -1,6 +1,6 @@
 html,
 body {
-  height: 100vh;
+  height: 100%;
   margin: 0;
   padding: 0;
   overflow: auto;
@@ -14,16 +14,7 @@ body {
 
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
   height: 100%;
-}
-
-main {
-  margin-top: 2vmin;
-  margin-bottom: 1vmin;
-  height: 70%;
-  border: 2px solid #282625;
-  padding: 1vmin;
 }
