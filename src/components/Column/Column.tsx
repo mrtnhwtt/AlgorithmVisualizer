@@ -9,32 +9,15 @@ interface ColumnProps {
 }
 
 const Column: React.FC<ColumnProps> = ({ value, arrayLength }) => {
-    let selected = useSelector((state: RootState) => state.root.selected);
+    let red = useSelector((state: RootState) => state.root.red);
+    let blue = useSelector((state: RootState) => state.root.blue);
+    let green = useSelector((state: RootState) => state.root.green);
+    let subArray = useSelector((state: RootState) => state.root.subarrayIndex);
 
-    if (selected[0] === value) {
-        return (
-            <div
-                className="column blue"
-                style={{
-                    width: 100 / arrayLength + "%",
-                    height: value / arrayLength * 100 + "%",
-                }}>
-            </div>
-        );
-    } else if (selected[1] === value) {
-        return (
-            <div
-                className="column red"
-                style={{
-                    width: 100 / arrayLength + "%",
-                    height: value / arrayLength * 100 + "%",
-                }}>
-            </div>
-        );
-    }
+    let classes = `column ${red.includes(value) ? 'red' : ''} ${blue.includes(value) ? 'blue' : ''} ${subArray.includes(value) ? 'subarray' : ''} ${green.includes(value) ? 'green' : ''}`;
     return (
         <div
-            className="column"
+            className={classes}
             style={{
                 width: 100 / arrayLength + "%",
                 height: value / arrayLength * 100 + "%",

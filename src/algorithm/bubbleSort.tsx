@@ -1,31 +1,24 @@
-import { delay, incrementStep } from "./utils";
-import { toggleSorting, setSelected, setArray, setStep } from '../context/rootSlice';
+import { updateArrayDisplay } from "./utils";
+import { toggleSorting } from '../context/rootSlice';
 import { Dispatch } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
 
-export const BubbleSort = async (array: number[], speed: number, dispatch: Dispatch<AnyAction>) => {
+export const BubbleSort = async (array: number[], dispatch: Dispatch<AnyAction>, speed: number) => {
     dispatch(toggleSorting());
     let arr = [...array];
-    let stepCount = 0;
-    dispatch(setStep(stepCount));
     let len = arr.length;
     for (let i = 0; i < len; i++) {
-        stepCount = incrementStep(stepCount, dispatch);
         for (let j = 0; j < len - i - 1; j++) {
-            stepCount = incrementStep(stepCount, dispatch);
-            dispatch(setSelected([arr[j + 1], arr[j]]));
-            await delay(speed);
+            await updateArrayDisplay({ dispatch, speed, red: [arr[j]], blue: [arr[j + 1]] })
             if (arr[j] > arr[j + 1]) {
                 let temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
-                stepCount = incrementStep(stepCount, dispatch);
-                dispatch(setSelected([arr[j], arr[j + 1]]));
-                dispatch(setArray([...arr]));
-                await delay(speed);
+                await updateArrayDisplay({ dispatch, speed, arr, red: [arr[j + 1]], blue: [arr[j]] })
+
             }
         }
     }
-    dispatch(setSelected([-1, -1]));
+    await updateArrayDisplay({ dispatch, speed, red: [], blue: [], wait: false })
     dispatch(toggleSorting());
 };

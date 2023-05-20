@@ -12,16 +12,16 @@ export const useHandleSort = () => {
     const handleSort = () => {
         switch (method) {
             case "bubble":
-                BubbleSort(array, speed, dispatch);
+                BubbleSort(array, dispatch, speed);
                 break;
             case "selection":
-                SelectionSort(array, speed, dispatch)
+                SelectionSort(array, dispatch, speed)
                 break;
             case "insertion":
-                InsertionSort(array, speed, dispatch)
+                InsertionSort(array, dispatch, speed)
                 break;
             case "quick":
-                QuickSort(array, speed, dispatch)
+                QuickSort(array, dispatch, speed)
                 break;
             default:
                 break;
